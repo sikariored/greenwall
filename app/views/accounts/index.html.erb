@@ -4,10 +4,8 @@
     <ul class="accounts-ul">
       <% @all_accounts.each do |account| %>
         <li class="accounts-li">
-          <span class="accounts-list-info"><%= account.id %> :: <%=  account.name %></span> |
-          <%= link_to 'Инфо', account_path(account) %> |
-          <%= link_to 'Редактировать', edit_account_registration_path(account.id)%> |
-          <%= link_to 'Удалить', account_path(account), data: {turbo_method: 'delete', turbo_confirm: 'Удалить аккаунт?'} %>
+          <span class="accounts-list-info">id <%= account.id %> :: <%=  account.name %></span> |
+          <%= link_to 'Инфо', account_path(account) %>
         </li>
       <% end %>
     </ul>

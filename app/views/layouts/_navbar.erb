@@ -1,4 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+<!--    Реализовать позже !<p>Профиль: <%#= current_account.name %></p>-->
+
   <a class="navbar-brand" href="/">GreenWall</a>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -21,9 +24,10 @@
       <% end %>
       <li class="nav-item">
         <% if account_signed_in? %>
-          <%= button_to "Sign out", destroy_account_session_path, method: :delete %>
+          <%= button_to "Выйти", destroy_account_session_path, method: :delete %>
+          <%= button_to "Редактировать профиль", edit_account_registration_path(current_account), method: :get %>
         <% else %>
-          <%= link_to "Sign in", new_account_session_path %>
+          <%= link_to "Войти", new_account_session_path %>
         <% end %>
       </li>
     </ul>

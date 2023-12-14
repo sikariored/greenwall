@@ -8,6 +8,34 @@
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <p>Текущая роль: <%= @account.role %></p>
+  </div>
+  <div class="edit-account-field">
+    <label for="account_role">Новая роль:</label>
+    <!--    <%#= f.text_field :role, required: true, id: "account_role" %> Ввод вручную-->
+    <!--    <%#= f.collection_select :role_ids, Role.all, :id, :role_name, {}, { multiple: true, prompt: 'Выберите роль' } %> Выбор из списка-->
+    <div class="role-checkbox-list">
+      <% Role.all.each do |role| %>
+        <div class="role-checkbox">
+          <%= f.check_box :role_ids, { multiple: true }, role.id, nil %>
+          <%= label_tag "account_role_#{role.id}", role.role_name %>
+        </div>
+      <% end %>
+    </div>
+    <!--    <%#= f.collection_check_boxes :role_ids, Role.all, :id, :role_name %> Горизонтальный список из чекбоксов -->
+  </div>
+
+  <div class="field">
+    <%= f.label :department %><br>
+    <%= f.text_field :department %>
+  </div>
+
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>

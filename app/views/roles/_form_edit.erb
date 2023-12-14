@@ -6,6 +6,6 @@
   <div class="actions">
     <%= f.submit 'Редактировать роль' %>
     <button><%= link_to 'Отменить', roles_path %></button>
-    <button><%= link_to 'Удалить роль', role_path(@role), data: {turbo_method: 'delete', turbo_confirm: 'Удалить эту роль?'} %></button>
+    <%= button_to 'Удалить роль', role_path(@role), method: :delete %>
   </div>
 <% end %>
