@@ -21,7 +21,14 @@ module Greenwall
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
     #
-    # config.time_zone = "Central Time (US & Canada)"
+    config.time_zone = "Moscow"
+    config.active_record.default_timezone = :local
+    config.active_record.time_zone_aware_attributes = true
     # config.eager_load_paths << Rails.root.join("extras")
+    config.time_formats = {
+      default: "%Y-%m-%d %H:%M:%S",
+      short: "%b %d, %Y",
+      long: "%B %d, %Y %H:%M",
+    }
   end
 end

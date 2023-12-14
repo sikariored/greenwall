@@ -1,0 +1,10 @@
+<h1>Информация о роли</h1>
+
+<p>Название роли: <%= @role.role_name %></p>
+<br>
+<p>Аккаунты с данной ролью: </p>
+<ul>
+  <% @role_accounts.each do |account| %>
+    <li><%= account.full_name %> :: <%= account.login %></li>
+  <% end %>
+</ul>

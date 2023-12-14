@@ -1,0 +1,11 @@
+<%= form_with model: @role do |f| %>
+  <div class="edit-role-field">
+    <label for="role_role_name">Имя:</label>
+    <%= f.text_field :role_name, require: true, id: 'role_role_name'%>
+  </div>
+  <div class="actions">
+    <%= f.submit 'Редактировать роль' %>
+    <button><%= link_to 'Отменить', roles_path %></button>
+    <button><%= link_to 'Удалить роль', role_path(@role), data: {turbo_method: 'delete', turbo_confirm: 'Удалить эту роль?'} %></button>
+  </div>
+<% end %>

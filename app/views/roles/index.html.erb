@@ -1,0 +1,15 @@
+<h1>Список ролей</h1>
+
+<% if @roles.any? %>
+  <% @roles.each do |role| %>
+    <ul class="roles-list">
+      <li class="role-list-item">
+        <%= role.role_name %> |
+        <%= link_to 'Инфо', role_path(role) %> |
+        <%= link_to 'Редактировать', edit_role_path(role) %>
+      </li>
+    </ul>
+  <% end %>
+<% else %>
+  <p>Роли не найдены (╯°□°）╯︵ ┻━┻</p>
+<% end %>
