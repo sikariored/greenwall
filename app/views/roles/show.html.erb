@@ -5,6 +5,6 @@
 <p>Аккаунты с данной ролью: </p>
 <ul>
   <% @role_accounts.each do |account| %>
-    <li><%= account.full_name %> :: <%= account.login %></li>
+    <li><%= account.name %> :: <%= account.email %> :: <%= account.department %></li>
   <% end %>
 </ul>

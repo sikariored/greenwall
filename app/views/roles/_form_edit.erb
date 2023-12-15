@@ -4,7 +4,8 @@
     <%= f.text_field :role_name, require: true, id: 'role_role_name'%>
   </div>
   <div class="actions">
-    <%= f.submit 'Редактировать роль' %>
+    <%#= f.submit 'Редактировать роль' %>
+    <%= button_to 'Редактировать роль', edit_role_path(@role), method: :patch %>
     <button><%= link_to 'Отменить', roles_path %></button>
     <%= button_to 'Удалить роль', role_path(@role), method: :delete %>
   </div>

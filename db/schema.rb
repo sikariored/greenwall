@@ -10,14 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_14_091049) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_15_140004) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "accounts", force: :cascade do |t|
-    t.string "name", default: ""
-    t.string "role"
-    t.string "department"
+    t.string "name", default: "DefaultName"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -33,6 +31,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_14_091049) do
     t.datetime "locked_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "department_id"
+    t.index ["department_id"], name: "index_accounts_on_department_id"
     t.index ["email"], name: "index_accounts_on_email", unique: true
     t.index ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true
   end
@@ -40,9 +40,17 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_14_091049) do
   create_table "accounts_roles", id: false, force: :cascade do |t|
     t.bigint "account_id"
     t.bigint "role_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["account_id", "role_id"], name: "index_accounts_roles_on_account_id_and_role_id", unique: true
     t.index ["account_id"], name: "index_accounts_roles_on_account_id"
     t.index ["role_id"], name: "index_accounts_roles_on_role_id"
+  end
+
+  create_table "departments", force: :cascade do |t|
+    t.string "department_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "roles", force: :cascade do |t|
@@ -51,4 +59,5 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_14_091049) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "accounts", "departments"
 end

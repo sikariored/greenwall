@@ -4,22 +4,27 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :email, 'Электронная почта' %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
   <div class="field">
-    <%= f.label :name %><br>
+    <%= f.label :name, 'Имя' %><br>
     <%= f.text_field :name %>
   </div>
 
   <div class="field">
-    <p>Текущая роль: <%= @account.role %></p>
+    <p>
+      Текущие роли:
+      <% @account.roles.each do |role| %>
+        <li>
+          <%= role.role_name %>
+        </li>
+      <% end %>
+    </p>
   </div>
   <div class="edit-account-field">
     <label for="account_role">Новая роль:</label>
-    <!--    <%#= f.text_field :role, required: true, id: "account_role" %> Ввод вручную-->
-    <!--    <%#= f.collection_select :role_ids, Role.all, :id, :role_name, {}, { multiple: true, prompt: 'Выберите роль' } %> Выбор из списка-->
     <div class="role-checkbox-list">
       <% Role.all.each do |role| %>
         <div class="role-checkbox">
@@ -28,44 +33,54 @@
         </div>
       <% end %>
     </div>
-    <!--    <%#= f.collection_check_boxes :role_ids, Role.all, :id, :role_name %> Горизонтальный список из чекбоксов -->
   </div>
 
   <div class="field">
-    <%= f.label :department %><br>
-    <%= f.text_field :department %>
+    <p>
+      Текущий отдел: <%= @account.department&.department_name || 'Не назначен' %>
+    </p>
   </div>
+  <div class="edit-account-field">
+    <label for="account_department">Новый отдел:</label>
+    <div class="department-radio-list">
+      <% Department.all.each do |department| %>
+        <div class="department-radio">
+          <%= f.radio_button :department_id, department.id %>
+          <%= label_tag "account_department_#{department.id}", department.department_name %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
   <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+    <%= f.label :password, 'Новый пароль' %> <i>(Оставьте пустым, если не хотите <b>менять пароль</b>)</i><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
     <% if @minimum_password_length %>
       <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
+      <em>Пароль должен содержать <b> минимум <%= @minimum_password_length %> символов </b></em>
     <% end %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label :password_confirmation, 'Подтверждение нового пароля' %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
   <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+    <%= f.label :current_password, 'Текущий пароль' %> <i>(введите ваш текущий пароль для применения внесённых измененйи)</i><br />
     <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Update" %>
+    <%= f.submit "Принять" %>
   </div>
 <% end %>
+<br>
+<div><%= button_to "Удалить этот аккаунт", registration_path(resource_name), data: { confirm: "УДАЛИТЬ ЭТОТ АККАУНТ!?", turbo_confirm: "УДАЛИТЬ ЭТОТ АККАУНТ!?" }, method: :delete %></div>
 
-<h3>Cancel my account</h3>
-
-<div>Unhappy? <%= button_to "Delete my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
-
-<%= link_to "Back", :back %>
+<%= link_to "Назад", :back %>

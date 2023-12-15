@@ -1,12 +1,18 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
-<!--    Реализовать позже !<p>Профиль: <%#= current_account.name %></p>-->
+  <% if account_signed_in? %>
+    <p>Профиль: <%= current_account.name %></p>
+  <% end %>
+
+  <% if current_account&.admin? %>
+    <p>Вы Администратор портала!</p>
+  <% end %>
 
   <a class="navbar-brand" href="/">GreenWall</a>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <% if account_signed_in? %>
+      <% if account_signed_in? && current_account&.admin? %>
         <li class="nav-item">
           <%= link_to 'Список аккаунтов', accounts_path %>
         </li>
@@ -20,6 +26,12 @@
         <li class="nav-item">
           <%= link_to 'Создать роль', new_role_path %>
           <hr>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Создать отдел', new_department_path %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Список отделов', departments_path %>
         </li>
       <% end %>
       <li class="nav-item">

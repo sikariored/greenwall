@@ -1,5 +1,9 @@
 class AccountsController < ApplicationController
+  before_action :require_admin, only: [:show]
 
+  def home
+    @account = Account.find_by(params[:id])
+  end
   def index
     @all_accounts = Account.all
     @account = Account.find_by(params[:id])
@@ -20,8 +24,14 @@ class AccountsController < ApplicationController
     end
   end
 
-    private
+  private
     def account_params
       params.require(:account).permit(:name, :email, :role, :department)
     end
+
+  def require_admin
+    unless current_account.admin?
+      redirect_to root_path, alert: 'Доступ запрещён! Вы не администратор.'
+    end
+  end
 end
