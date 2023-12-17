@@ -7,6 +7,6 @@
     <li><%= role.role_name %></li>
   <% end %>
 </p>
-<p>Отдел: <%= @account.department %></p>
+<p> Отдел: <%= @account.department.department_name %> </p>
 <p>Создан: <%= @account.created_at %></p>
 <p>Изменён: <%= @account.updated_at %></p>

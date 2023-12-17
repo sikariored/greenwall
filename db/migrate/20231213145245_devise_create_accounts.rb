@@ -4,7 +4,7 @@ class DeviseCreateAccounts < ActiveRecord::Migration[7.1]
   def change
     create_table :accounts do |t|
 
-      t.string :name,               default: "DefaultName"
+      t.string :name,               default: ""
 
       ## Database authenticatable
       t.string :email,              null: false, default: ""

@@ -14,9 +14,7 @@
   </div>
 
   <div class="edit-account-field">
-    <label for="account_role">Роли:</label>
-    <!--    <%#= f.text_field :role, required: true, id: "account_role" %> Ввод вручную-->
-    <!--    <%#= f.collection_select :role_ids, Role.all, :id, :role_name, {}, { multiple: true, prompt: 'Выберите роль' } %> Выбор из списка-->
+    <label for="account_role">Роль:</label>
     <div class="role-checkbox-list">
       <% Role.all.each do |role| %>
         <div class="role-checkbox">
@@ -25,18 +23,24 @@
         </div>
       <% end %>
     </div>
-    <!--    <%#= f.collection_check_boxes :role_ids, Role.all, :id, :role_name %> Горизонтальный список из чекбоксов -->
   </div>
 
-  <div class="field">
-    <%= f.label :department, 'Отдел' %><br>
-    <%= f.text_field :department %>
+  <div class="edit-account-field">
+    <label for="account_department">Отдел:</label>
+    <div class="department-radio-list">
+      <% Department.all.each do |department| %>
+        <div class="department-radio">
+          <%= f.radio_button :department_id, department.id %>
+          <%= label_tag "account_department_#{department.id}", department.department_name %>
+        </div>
+      <% end %>
+    </div>
   </div>
 
   <div class="field">
     <%= f.label :password, 'Пароль' %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <em>(Минимум <%= @minimum_password_length %> символов)</em>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
