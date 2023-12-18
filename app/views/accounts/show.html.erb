@@ -2,11 +2,10 @@
 <p>Email: <%= @account.email %></p>
 <p>Имя: <%= @account.name %></p>
 <p>
-  Роли:
-  <% @account.roles.each do |role| %>
-    <li><%= role.role_name %></li>
+  Роли: <% @account.roles.each do |role| %>
+    |<%= role.role_name %>|
   <% end %>
 </p>
-<p> Отдел: <%= @account.department.department_name %> </p>
+<p> Отдел: <%= @account.department ? @account.department.department_name : 'не установлен' %> </p>
 <p>Создан: <%= @account.created_at %></p>
 <p>Изменён: <%= @account.updated_at %></p>

@@ -1,4 +1,4 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h2>Редактирование аккаунта</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
@@ -23,6 +23,7 @@
       <% end %>
     </p>
   </div>
+
   <div class="edit-account-field">
     <label for="account_role">Новая роль:</label>
     <div class="role-checkbox-list">

@@ -2,15 +2,19 @@ class AccountsController < ApplicationController
   before_action :require_admin, only: [:show]
 
   def home
-    @account = Account.find_by(params[:id])
+    @account = Account.find_by(id: params[:id])
   end
   def index
     @all_accounts = Account.all
-    @account = Account.find_by(params[:id])
+    @account = Account.find_by(id: params[:id])
   end
 
   def show
-    @account = Account.find(params[:id])
+    @account = Account.find_by(id: params[:id])
+  end
+
+  def edit
+    @account = Account.find_by(id: params[:id])
   end
 
   def update

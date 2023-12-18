@@ -5,6 +5,11 @@
 <p>Аккаунты в данном отделе: </p>
 <ul>
   <% @department_accounts.each do |account| %>
-    <li><%= account.name %> :: <%= account.email %> :: <%= account.roles %></li>
+    <li><%= account.name %> :: <%= account.email %> |
+      <% account.roles.each do |role| %>
+      <%= role.role_name %> |
+    <% end %>
+    </li>
+
   <% end %>
 </ul>
