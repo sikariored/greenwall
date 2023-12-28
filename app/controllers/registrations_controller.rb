@@ -3,7 +3,6 @@ class RegistrationsController < Devise::RegistrationsController
   before_action :require_admin, only: [:new]
 
   private
-
   def require_admin
     if current_account != nil
       unless current_account.admin?

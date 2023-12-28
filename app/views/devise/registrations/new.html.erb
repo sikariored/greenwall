@@ -4,49 +4,35 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%= f.label :email, 'Электронная почта' %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :name, 'Имя' %><br>
+    <%= f.label :name, 'Имя' %>
     <%= f.text_field :name %>
   </div>
 
-  <div class="edit-account-field">
-    <label for="account_role">Роль:</label>
-    <div class="role-checkbox-list">
-      <% Role.all.each do |role| %>
-        <div class="role-checkbox">
-          <%= f.check_box :role_ids, { multiple: true }, role.id, nil %>
-          <%= label_tag "account_role_#{role.id}", role.role_name %>
-        </div>
-      <% end %>
-    </div>
+  <div class="field">
+    <%= f.label :email, 'Электронная почта' %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
   <div class="edit-account-field">
-    <label for="account_department">Отдел:</label>
-    <div class="department-radio-list">
-      <% Department.all.each do |department| %>
-        <div class="department-radio">
-          <%= f.radio_button :department_id, department.id %>
-          <%= label_tag "account_department_#{department.id}", department.department_name %>
-        </div>
-      <% end %>
-    </div>
+    <%= f.label :role_id, 'Роль' %>
+    <%= f.collection_select :role_id, Role.all, :id, :name %>
+  </div>
+
+  <div class="edit-account-field">
+    <%= f.label :department_id, 'Отдел' %>
+    <%= f.collection_select :department_id, Department.all, :id, :name %>
   </div>
 
   <div class="field">
     <%= f.label :password, 'Пароль' %>
     <% if @minimum_password_length %>
     <em>(Минимум <%= @minimum_password_length %> символов)</em>
-    <% end %><br />
+    <% end %>
     <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation, 'Подтверждение пароля' %><br />
+    <%= f.label :password_confirmation, 'Подтверждение пароля' %>
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
@@ -55,4 +41,6 @@
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<% if account_signed_in? == false %>
+  <%= render "devise/shared/links" %>
+<% end %>

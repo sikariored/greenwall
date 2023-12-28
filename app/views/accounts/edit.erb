@@ -12,34 +12,25 @@
   </div>
 
   <div class="field">
-    <p>
-      Текущие роли:
-      <% @account.roles.each do |role| %>
-        <li>
-          <%= role.role_name %>
-        </li>
-      <% end %>
-    </p>
-  </div>
-
-  <div class="edit-account-field">
-    <label for="account_role">Новая роль:</label>
-    <div class="role-checkbox-list">
-      <% Role.all.each do |role| %>
-        <div class="role-checkbox">
-          <%= f.check_box :role_ids, { multiple: true }, role.id, nil %>
-          <%= label_tag "account_role_#{role.id}", role.role_name %>
-        </div>
-      <% end %>
-    </div>
+    <p>Текущая роль: <%= @account.role.name %></p>
+    <% unless @account.role.name == "Администратор" %>
+      <%= f.label :role_id, 'Новая роль' %>
+      <%= f.collection_select :role_id, Role.all, :id, :name %>
+    <% end %>
   </div>
 
   <div class="field">
-    <%= f.label :department, 'Отдел' %><br>
-    <%= f.collection_select :department_id, Department.all, :id, :department_name %>
+    <p>Текущий отдел: <%= @account.department.name %></p>
+    <% unless @account.role.name == "Администратор" %>
+      <%= f.label :department_id, 'Новый отдел' %>
+      <%= f.collection_select :department_id, Department.all, :id, :name %>
+    <% end %>
   </div>
 
   <div class="actions">
-    <%= f.submit 'Обновить аккаунт' %>
+    <%= f.submit 'Обновить' %>
   </div>
+
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
 <% end %>

@@ -25,27 +25,21 @@ class DepartmentsController < ApplicationController
     @department = Department.find(params[:id])
   end
 
-  def update
-    @department = Department.find(params[:id])
-    if @department.update role_params
-      redirect_to departments_path
-    else
-      render :edit
-    end
-  end
-
   def destroy
     @department = Department.find(params[:id])
-    if @department.destroy
-      redirect_to departments_path
-    else
+    if @department.accounts.count > 0
+      flash[:alert] = "Нельзя удалить отдел в котором есть пользователи. Кол-во: #{@department.accounts.count}"
       render :edit
+    elsif @department.accounts.count == 0
+      @department.destroy
+      redirect_to departments_path
+      flash[:notice] = "Отдел удален"
     end
   end
 
   private
 
   def department_params
-    params.require(:department).permit(:department_name)
+    params.require(:department).permit(:name)
   end
 end

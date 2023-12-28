@@ -1,15 +1,13 @@
 <h1>Информация об отделе</h1>
 
-<p>Название отдела: <%= @department.department_name %></p>
+<p>Название отдела: <%= @department.name %></p>
 <br>
 <p>Аккаунты в данном отделе: </p>
 <ul>
   <% @department_accounts.each do |account| %>
-    <li><%= account.name %> :: <%= account.email %> |
-      <% account.roles.each do |role| %>
-      <%= role.role_name %> |
+    <li><%= account.name %> :: <%= account.email %> | <%= account.role.name %>
     <% end %>
     </li>
-
-  <% end %>
 </ul>
+
+<%= link_to 'Назад', departments_path %>

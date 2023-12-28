@@ -13,67 +13,42 @@
     <%= f.text_field :name %>
   </div>
 
-  <div class="field">
-    <p>
-      Текущие роли:
-      <% @account.roles.each do |role| %>
-        <li>
-          <%= role.role_name %>
-        </li>
-      <% end %>
-    </p>
-  </div>
+<!--  <div class="field">-->
+<!--    <p>Текущая роль: <%#= @account.role.name %></p>-->
+    <%# unless current_account.role.name == "Администратор" %>
+      <%#= f.label :role_id, 'Новая роль' %>
+      <%#= f.collection_select :role_id, Role.all, :id, :name %>
+    <%# end %>
+<!--  </div>-->
 
-  <div class="edit-account-field">
-    <label for="account_role">Новая роль:</label>
-    <div class="role-checkbox-list">
-      <% Role.all.each do |role| %>
-        <div class="role-checkbox">
-          <%= f.check_box :role_ids, { multiple: true }, role.id, nil %>
-          <%= label_tag "account_role_#{role.id}", role.role_name %>
-        </div>
-      <% end %>
-    </div>
-  </div>
-
-  <div class="field">
-    <p>
-      Текущий отдел: <%= @account.department&.department_name || 'Не назначен' %>
-    </p>
-  </div>
-  <div class="edit-account-field">
-    <label for="account_department">Новый отдел:</label>
-    <div class="department-radio-list">
-      <% Department.all.each do |department| %>
-        <div class="department-radio">
-          <%= f.radio_button :department_id, department.id %>
-          <%= label_tag "account_department_#{department.id}", department.department_name %>
-        </div>
-      <% end %>
-    </div>
-  </div>
+<!--  <div class="field">-->
+<!--    <p>Текущий отдел: <%#= @account.department.name %></p>-->
+    <%# unless current_account.role.name == "Администратор" %>
+      <%#= f.label :department_id, 'Новый отдел' %>
+      <%#= f.collection_select :department_id, Department.all, :id, :name %>
+    <%# end %>
+<!--  </div>-->
 
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <div>В настоящее время ожидает подтверждения для: <%= resource.unconfirmed_email %></div>
   <% end %>
 
   <div class="field">
-    <%= f.label :password, 'Новый пароль' %> <i>(Оставьте пустым, если не хотите <b>менять пароль</b>)</i><br />
+    <%= f.label :password, 'Новый пароль' %> <i>(Оставьте пустым, если не хотите <b>менять пароль</b>)</i>
     <%= f.password_field :password, autocomplete: "new-password" %>
     <% if @minimum_password_length %>
-      <br />
       <em>Пароль должен содержать <b> минимум <%= @minimum_password_length %> символов </b></em>
     <% end %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation, 'Подтверждение нового пароля' %><br />
+    <%= f.label :password_confirmation, 'Подтверждение нового пароля' %>
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
   <div class="field">
-    <%= f.label :current_password, 'Текущий пароль' %> <i>(введите ваш текущий пароль для применения внесённых измененйи)</i><br />
+    <%= f.label :current_password, 'Текущий пароль' %> <i>(введите ваш текущий пароль для применения внесённых измененйи)</i>
     <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
 
@@ -82,6 +57,6 @@
   </div>
 <% end %>
 <br>
-<div><%= button_to "Удалить этот аккаунт", registration_path(resource_name), data: { confirm: "УДАЛИТЬ ЭТОТ АККАУНТ!?", turbo_confirm: "УДАЛИТЬ ЭТОТ АККАУНТ!?" }, method: :delete %></div>
+<div><%= button_to "Удалить этот аккаунт", registration_path(resource_name), method: :delete %></div>
 
 <%= link_to "Назад", :back %>

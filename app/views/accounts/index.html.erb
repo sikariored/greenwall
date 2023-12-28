@@ -4,7 +4,7 @@
     <ul class="accounts-ul">
       <% @all_accounts.each do |account| %>
         <li class="accounts-li">
-          <span class="accounts-list-info">id <%= account.id %> :: <%=  account.name %></span> |
+          <span class="accounts-list-info">id <%= account.id %> :: <%=  account.name %> :: <%= account.role.name %></span> |
           <%= link_to 'Инфо', account_path(account) %> |
           <%= link_to 'Редактировать', edit_account_path(account) %>
         </li>
@@ -13,4 +13,5 @@
   <% else %>
     <p>Аккаунты не найдены (╯°□°）╯︵ ┻━┻</p>
   <% end %>
+
 </div>

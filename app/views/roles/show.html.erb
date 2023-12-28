@@ -1,10 +1,13 @@
 <h1>Информация о роли</h1>
 
-<p>Название роли: <%= @role.role_name %></p>
+<p>Название роли: <%= @role.name %></p>
 <br>
 <p>Аккаунты с данной ролью: </p>
+<p>Кол-во пользователей: <%= @role.accounts.count %></p>
 <ul>
-  <% @role_accounts.each do |account| %>
-    <li><%= account.name %> :: <%= account.email %> :: <%= account.department %></li>
+  <% @role.accounts.each do |account| %>
+    <li><%= account.name %> :: <%= account.email %> :: <%= account.department.name %></li>
   <% end %>
 </ul>
+
+<%= link_to "Назад", roles_path %>

@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Greenwall</title>
+    <title>
+      <% if account_signed_in? %>
+        <%= current_account.name %>
+      <% else %>
+        GreenWall
+      <% end %>
+    </title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,11 +17,14 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-
     <%= render 'layouts/navbar' %>
 
+    <div class="flash">
+      <div class="notice"><%= notice %></div>
+      <div class="alert"><%= alert %></div>
+    </div>
+
     <%= yield %>
+
   </body>
 </html>

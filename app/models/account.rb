@@ -5,17 +5,13 @@ class Account < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :trackable, :lockable, :timeoutable
 
-  has_and_belongs_to_many :roles
+  belongs_to :role
   belongs_to :department
   accepts_nested_attributes_for :department
 
   validates :name, presence: true
 
-  def has_role?(role_name)
-    roles.exists?(role_name: role_name)
-  end
-
   def admin?
-    has_role?('Администратор портала')
+    role.name == "Администратор"
   end
 end

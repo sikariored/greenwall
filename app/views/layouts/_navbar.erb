@@ -2,17 +2,14 @@
 
   <% if account_signed_in? %>
     <p>Профиль: <%= current_account.name %></p>
-  <% end %>
-
-  <% if current_account&.admin? %>
-    <p>Вы Администратор портала!</p>
+    <p>Роль: <%= current_account.role.name %></p>
   <% end %>
 
   <a class="navbar-brand" href="/">GreenWall</a>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <% if account_signed_in? && current_account&.admin? %>
+      <% if account_signed_in? && current_account.admin? %>
         <li class="nav-item">
           <%= link_to 'Список аккаунтов', accounts_path %>
         </li>
@@ -28,16 +25,17 @@
           <hr>
         </li>
         <li class="nav-item">
-          <%= link_to 'Создать отдел', new_department_path %>
-        </li>
-        <li class="nav-item">
           <%= link_to 'Список отделов', departments_path %>
         </li>
+        <li class="nav-item">
+          <%= link_to 'Создать отдел', new_department_path %>
+        </li>
+        <hr>
       <% end %>
       <li class="nav-item">
         <% if account_signed_in? %>
-          <%= button_to "Выйти", destroy_account_session_path, method: :delete %>
           <%= link_to "Редактировать профиль", edit_account_registration_path %>
+          <%= button_to "Выйти", destroy_account_session_path, method: :delete %>
         <% else %>
           <%= link_to "Войти", new_account_session_path %>
         <% end %>

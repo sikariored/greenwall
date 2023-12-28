@@ -5,7 +5,6 @@ class RolesController < ApplicationController
 
   def show
     @role = Role.find(params[:id])
-    @role_accounts = @role.accounts
   end
 
   def new
@@ -25,27 +24,22 @@ class RolesController < ApplicationController
     @role = Role.find(params[:id])
   end
 
-  def update
-    @role = Role.find(params[:id])
-    if @role.update role_params
-      redirect_to roles_path
-    else
-      render :edit
-    end
-  end
-
   def destroy
     @role = Role.find(params[:id])
-    if @role.destroy
-      redirect_to roles_path
-    else
+
+    if @role.accounts.count > 0
+      flash[:alert] = "Нельзя удалить роль. Она привязана к пользователям. Кол-во: #{@role.accounts.count}"
       render :edit
+    elsif @role.accounts.count == 0
+      @role.destroy
+      redirect_to roles_path
+      flash[:notice] = "Роль удалена"
     end
   end
 
   private
 
   def role_params
-    params.require(:role).permit(:role_name)
+    params.require(:role).permit(:name)
   end
 end

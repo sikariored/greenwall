@@ -1,11 +1,6 @@
 <%= form_with model: @department do |f| %>
-  <div class="edit-department-field">
-    <label for="department_department_name">Имя:</label>
-    <%= f.text_field :department_name, require: true, id: 'department_department_name' %>
-  </div>
   <div class="actions">
-    <%= button_to 'Редактировать отдел', edit_department_path(@department), method: :patch %>
-    <button><%= link_to 'Отменить', departments_path %></button>
+    <%= link_to 'Назад', departments_path %>
     <%= button_to 'Удалить отдел', department_path(@department), method: :delete %>
   </div>
 <% end %>

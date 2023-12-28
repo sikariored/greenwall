@@ -4,7 +4,7 @@
   <% @all_departments.each do |department| %>
     <ul class="departments-list">
       <li class="department-list-item">
-        <%= department.department_name %> |
+        <%= department.name %> |
         <%= link_to 'Инфо', department_path(department) %> |
         <%= link_to 'Редактировать', edit_department_path(department) %>
       </li>

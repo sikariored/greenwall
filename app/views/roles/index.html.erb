@@ -4,7 +4,7 @@
   <% @all_roles.each do |role| %>
     <ul class="roles-list">
       <li class="role-list-item">
-        <%= role.role_name %> |
+        <%= role.name %> |
         <%= link_to 'Инфо', role_path(role) %> |
         <%= link_to 'Редактировать', edit_role_path(role) %>
       </li>
