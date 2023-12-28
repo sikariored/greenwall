@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_28_081950) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_28_182857) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -33,10 +33,12 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_28_081950) do
     t.datetime "updated_at", null: false
     t.bigint "department_id"
     t.bigint "role_id", default: 2, null: false
+    t.bigint "secure_record_id"
     t.index ["department_id"], name: "index_accounts_on_department_id"
     t.index ["email"], name: "index_accounts_on_email", unique: true
     t.index ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true
     t.index ["role_id"], name: "index_accounts_on_role_id"
+    t.index ["secure_record_id"], name: "index_accounts_on_secure_record_id"
   end
 
   create_table "departments", force: :cascade do |t|
@@ -51,6 +53,18 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_28_081950) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "secure_records", force: :cascade do |t|
+    t.string "login"
+    t.string "password"
+    t.string "resource"
+    t.bigint "account_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_secure_records_on_account_id"
+  end
+
   add_foreign_key "accounts", "departments"
   add_foreign_key "accounts", "roles"
+  add_foreign_key "accounts", "secure_records"
+  add_foreign_key "secure_records", "accounts"
 end

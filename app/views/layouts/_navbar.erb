@@ -35,6 +35,8 @@
       <li class="nav-item">
         <% if account_signed_in? %>
           <%= link_to "Редактировать профиль", edit_account_registration_path %>
+          <%= link_to "Создать безопасную запись", new_secure_record_path %>
+          <%= link_to 'Все записи', secure_records_path %>
           <%= button_to "Выйти", destroy_account_session_path, method: :delete %>
         <% else %>
           <%= link_to "Войти", new_account_session_path %>

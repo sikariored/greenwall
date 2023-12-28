@@ -1,0 +1,15 @@
+<%= form_with model: @secure_record do |f| %>
+
+  <% f.hidden_field :id, value: current_account.id %>
+
+  <%= f.label :login %>
+  <%= f.text_field :login %>
+
+  <%= f.label :password %>
+  <%= f.text_field :password %>
+
+  <%= f.label :resource %>
+  <%= f.text_field :resource %>
+
+  <%= f.submit 'Create SecureRecord'%>
+<% end %>

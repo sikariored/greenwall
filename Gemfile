@@ -72,3 +72,5 @@ gem "devise", "~> 4.9"
 
 
 gem "i18n", "~> 1.14"
+
+gem "attr_encrypted", "~> 4.0"

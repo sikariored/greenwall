@@ -7,7 +7,7 @@ class Account < ApplicationRecord
 
   belongs_to :role
   belongs_to :department
-  accepts_nested_attributes_for :department
+  has_many :secure_records
 
   validates :name, presence: true
 

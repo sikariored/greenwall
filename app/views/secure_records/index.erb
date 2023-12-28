@@ -1,0 +1,7 @@
+<% current_account.secure_records.each do |record| %>
+  <p>
+    Login: <%= record.login %>
+    Password: <%= record.password %>
+    Resource: <%= record.resource %>
+  </p>
+<% end %>

@@ -3,7 +3,6 @@ Rails.application.routes.draw do
 
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 
-  # devise_for :accounts
   devise_for :accounts, controllers: {
     registrations: 'registrations'
   }
@@ -11,5 +10,6 @@ Rails.application.routes.draw do
   resources :accounts
   resources :roles
   resources :departments
+  resources :secure_records
 
 end
