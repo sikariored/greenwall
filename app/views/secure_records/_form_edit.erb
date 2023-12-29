@@ -1,0 +1,30 @@
+<%= form_with model: @secure_record do |f| %>
+  <div class="form">
+
+    <div>
+      <%= f.label :login %>
+      <%= f.text_field :login %>
+    </div>
+
+    <div>
+      <div>
+        Текущий пароль:<%= @secure_record.password %>
+      </div>
+      <%= f.label :password, 'Новый пароль' %>
+      <%= f.password_field :password %>
+    </div>
+
+    <div>
+      <%= f.label :resource %>
+      <%= f.text_field :resource %>
+    </div>
+
+    <div>
+      <%= f.submit 'Обновить' %>
+    </div>
+
+    <%= link_to 'Назад', secure_records_path %>
+  </div>
+<% end %>
+
+<%= button_to 'Удалить', secure_record_path(@secure_record), method: :delete %>

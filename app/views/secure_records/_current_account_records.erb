@@ -1,18 +1,21 @@
-<div class="current_account_records_wrapper">
-  <h3>Ваши записи</h3>
-  <ul>
-    <li class="current_account_record_wrapper">
-      <strong><%= current_account.name %></strong>
+<h3>Ваши записи</h3>
+
+<% if current_account.secure_records.any? %>
+  <div class="all_records_wrapper">
+    <div class="all_records_record_wrapper">
       <% current_account.secure_records.each do |record| %>
         <br>
-        Login: <%= record.login %>
-        Password: <%= record.password %>
-        Resource: <%= record.resource %>
+        <span>Login: <%= record.login %></span>
+        <span>Password: <%= record.password %></span>
+        <span>Resource: <%= record.resource %></span>
+        <%= link_to 'Редактировать', edit_secure_record_path(record) %>
         <br>
       <% end %>
-    </li>
-  </ul>
-</div>
+<% else %>
+  <span>Записей не обнаружено</span>
+    </div>
+  </div>
+<% end %>
 
 
 

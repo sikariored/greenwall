@@ -19,6 +19,31 @@ class SecureRecordsController < ApplicationController
     end
   end
 
+  def edit
+    @secure_record = SecureRecord.find(params[:id])
+  end
+  def update
+    @secure_record = SecureRecord.find(params[:id])
+    if @secure_record.update(secure_record_params)
+      redirect_to secure_records_path
+      flash[:notice] = "Запись обновлена"
+    else
+      render :edit
+      flash[:alert] = "Ошибка при обновлении записи"
+    end
+  end
+
+  def destroy
+    @secure_record = SecureRecord.find(params[:id])
+    if @secure_record.destroy
+      redirect_to secure_records_path
+      flash[:notice] = "Запись удалена"
+    else
+      flash[:alert] = "Ошибка при удалении записи"
+      render :edit
+    end
+  end
+
   private
 
   def secure_record_params

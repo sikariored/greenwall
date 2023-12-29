@@ -86,3 +86,11 @@ ul {
     flex-direction: column;
     align-items: flex-start;
 }
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: fit-content;
+    max-width: 500px;
+}
