@@ -1,0 +1,23 @@
+<% if current_account.role.name == "Администратор" %>
+  <span>Все записи</span>
+  <div class="all_records_wrapper">
+    <% Account.all.each do |account| %>
+        <div class="all_records_record_wrapper">
+          <strong><%= account.name %></strong>
+          <% if account.secure_records.any? %>
+            <% account.secure_records.each do |record| %>
+              <br>
+              <span>Login: <%= record.login %></span>
+              <span>Password: <%= record.password %></span>
+              <span>Resource: <%= record.resource %></span>
+              <br>
+            <% end %>
+          <% else %>
+            <span>Записей не обнаружено</span>
+          <% end %>
+        </div>
+      </ul>
+    <% end %>
+  </div>
+<% end %>
+

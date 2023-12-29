@@ -1,6 +1,6 @@
 <%= form_with model: @role do |f| %>
   <div class="edit-role-field">
-    <label for="role_name">Имя:</label>
+    <%= f.label :name, 'Название роли' %>
     <%= f.text_field :name, require: true%>
   </div>
   <div class="actions">

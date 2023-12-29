@@ -1,6 +1,6 @@
 class SecureRecordsController < ApplicationController
   def index
-    @secure_records = SecureRecord.all
+    @all_secure_records = SecureRecord.all
   end
 
   def new
@@ -8,7 +8,14 @@ class SecureRecordsController < ApplicationController
   end
 
   def create
-    @secure_record = SecureRecord.new(secure_record_params)
+    @secure_record = SecureRecord.new secure_record_params
+    if @secure_record.save
+      redirect_to secure_records_path
+      flash[:notice] = "Запись создана"
+    else
+      render :new
+      flash[:alert] = "Ошибка при создании записи"
+    end
   end
 
   private

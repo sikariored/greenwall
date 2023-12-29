@@ -15,8 +15,10 @@ class RolesController < ApplicationController
     @role = Role.new role_params
     if @role.save
       redirect_to roles_path
+      flash[:notice] = "Новая роль создана"
     else
       render :new
+      flash[:alert] = "Ошибка при создании новой роли"
     end
   end
 

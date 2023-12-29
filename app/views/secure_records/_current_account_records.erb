@@ -1,0 +1,24 @@
+<div class="current_account_records_wrapper">
+  <h3>Ваши записи</h3>
+  <ul>
+    <li class="current_account_record_wrapper">
+      <strong><%= current_account.name %></strong>
+      <% current_account.secure_records.each do |record| %>
+        <br>
+        Login: <%= record.login %>
+        Password: <%= record.password %>
+        Resource: <%= record.resource %>
+        <br>
+      <% end %>
+    </li>
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
