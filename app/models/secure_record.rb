@@ -1,4 +1,4 @@
 class SecureRecord < ApplicationRecord
   belongs_to :account
-  attr_encrypted :password, key: "12GNhfVSCPR9uGq26Gio36hdxGebBU0P"
+  attr_encrypted :password, key: ENV['G1W2SK']
 end

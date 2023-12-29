@@ -5,6 +5,7 @@ class SecureRecordsController < ApplicationController
 
   def new
     @secure_record = SecureRecord.new
+    @gwk = ENV['G1W2SK']
   end
 
   def create
