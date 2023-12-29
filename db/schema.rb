@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_28_182857) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_29_094752) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -55,12 +55,14 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_28_182857) do
 
   create_table "secure_records", force: :cascade do |t|
     t.string "login"
-    t.string "password"
+    t.string "encrypted_password"
     t.string "resource"
     t.bigint "account_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "encrypted_password_iv"
     t.index ["account_id"], name: "index_secure_records_on_account_id"
+    t.index ["encrypted_password_iv"], name: "index_secure_records_on_encrypted_password_iv", unique: true
   end
 
   add_foreign_key "accounts", "departments"
