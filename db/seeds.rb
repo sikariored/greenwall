@@ -10,11 +10,16 @@
 
 # СОЗДАНИЕ РОЛЕЙ
 Role.create( name: "Администратор" )
+Role.create( name: "Директор" )
+Role.create( name: "Руководитель отдела продаж" )
+Role.create( name: "Руководитель отдела IT" )
+Role.create( name: "Руководитель отдела SEO" )
 Role.create( name: "Пользователь" )
 
 # СОЗДАНИЕ ОТДЕЛОВ
-Department.create( name: "IT" )
-Department.create( name: "SEO" )
+Department.create( name: "IT отдел" )
+Department.create( name: "SEO отдел" )
+Department.create( name: "Отдел продаж" )
 
 # СОЗДАНИЕ АККАУНТА АДМИНИСТРАТОРА
 Account.create( email: "admin@mail.ru", name: "Администратор", password: "123123", role_id: 1, department_id: 1 )
