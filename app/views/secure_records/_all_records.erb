@@ -11,8 +11,8 @@
                 <br>
                 <span>Login: <%= record.login %></span>
                 <span>Password: <%= record.password %></span>
-                <span>EncPassword: <%= record.encrypted_password %></span>
                 <span>Resource: <%= record.resource %></span>
+                <%= link_to 'Редактировать', edit_secure_record_path(record) %>
                 <br>
               <% end %>
             <% else %>
