@@ -1,7 +1,7 @@
 <% if account_signed_in? %>
   <% if current_account.role.name == "Администратор" %>
     <%= render 'all_records' %>
-  <% elsif current_account.role.name == "Пользователь" %>
+  <% else %>
     <%= render 'current_account_records' %>
   <% end %>
 <% end %>

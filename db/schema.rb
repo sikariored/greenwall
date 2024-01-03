@@ -55,8 +55,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_29_094752) do
 
   create_table "secure_records", force: :cascade do |t|
     t.string "login"
-    t.string "encrypted_password"
     t.string "resource"
+    t.string "encrypted_password"
     t.bigint "account_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
