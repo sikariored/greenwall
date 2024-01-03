@@ -48,6 +48,6 @@ class SecureRecordsController < ApplicationController
   private
 
   def secure_record_params
-    params.require(:secure_record).permit(:login, :password, :resource, :account_id)
+    params.require(:secure_record).permit(:login, :password, :resource, :account_id, :comment)
   end
 end
