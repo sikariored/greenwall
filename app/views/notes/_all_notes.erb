@@ -1,0 +1,5 @@
+<% Note.all.each do |note| %>
+  <div>
+    <strong><%= link_to note.title, note_path(note) %></strong> | <%= note.account.name %>
+  </div>
+<% end %>

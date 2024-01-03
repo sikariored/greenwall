@@ -1,0 +1,6 @@
+<% if current_account.role.name == "Администратор" %>
+  <%= render 'all_notes' %>
+<% else %>
+  <%= render 'current_account_notes' %>
+<% end %>
+

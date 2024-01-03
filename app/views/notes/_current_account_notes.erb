@@ -1,0 +1,4 @@
+<% @current_account_notes.each do |note| %>
+  <p><%= link_to note.title, note_path(note) %></p>
+  <%= button_to 'Удалить', note_path(note), method: 'delete' %>
+<% end %>

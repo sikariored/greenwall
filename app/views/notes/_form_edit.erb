@@ -1,0 +1,11 @@
+<%= form_with model: @note do |f| %>
+
+  <%= f.label :title %>
+  <%= f.text_field :title, require: true %>
+
+  <%= f.label :body %>
+  <%= f.text_field :body, require: true %>
+
+  <%= f.submit 'Update Note'%>
+
+<% end %>

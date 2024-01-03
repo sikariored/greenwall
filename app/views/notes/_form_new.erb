@@ -1,0 +1,12 @@
+<%= form_with model: @note do |f| %>
+
+  <%= f.label :title %>
+  <%= f.text_field :title, require: true %>
+
+  <%= f.label :body %>
+  <%= f.text_field :body, require: true %>
+
+  <%= f.hidden_field :account_id, value: current_account.id %>
+
+  <%= f.submit 'Create Note'%>
+<% end %>

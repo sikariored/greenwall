@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_03_121906) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_03_162226) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -48,6 +48,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_03_121906) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "notes", force: :cascade do |t|
+    t.string "title"
+    t.string "body"
+    t.bigint "account_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_notes_on_account_id"
+  end
+
   create_table "roles", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -70,5 +79,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_03_121906) do
   add_foreign_key "accounts", "departments"
   add_foreign_key "accounts", "roles"
   add_foreign_key "accounts", "secure_records"
+  add_foreign_key "notes", "accounts"
   add_foreign_key "secure_records", "accounts"
 end

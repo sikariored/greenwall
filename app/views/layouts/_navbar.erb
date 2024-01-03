@@ -37,6 +37,8 @@
           <%= link_to "Редактировать профиль", edit_account_registration_path %>
           <%= link_to "Создать безопасную запись", new_secure_record_path %>
           <%= link_to 'Все записи', secure_records_path %>
+          <%= link_to 'Создать заметку', new_note_path %>
+          <%= link_to 'Заметки', notes_path %>
           <%= button_to "Выйти", destroy_account_session_path, method: :delete %>
         <% else %>
           <%= link_to "Войти", new_account_session_path %>

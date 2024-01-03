@@ -11,5 +11,5 @@ Rails.application.routes.draw do
   resources :roles
   resources :departments
   resources :secure_records
-
+  resources :notes
 end
