@@ -27,10 +27,13 @@
     <% end %>
   </div>
 
+  <div class="edit-account-field">
+    <%= f.label :department_access, 'Доступ к отделу' %>
+    <%= f.collection_check_boxes :department_access, Department.all, :id, :name %>
+  </div>
+
   <div class="actions">
     <%= f.submit 'Обновить' %>
   </div>
 
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
 <% end %>

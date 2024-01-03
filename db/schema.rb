@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_29_094752) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_03_070439) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -34,6 +34,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_29_094752) do
     t.bigint "department_id"
     t.bigint "role_id", default: 2, null: false
     t.bigint "secure_record_id"
+    t.integer "department_access", default: [], array: true
     t.index ["department_id"], name: "index_accounts_on_department_id"
     t.index ["email"], name: "index_accounts_on_email", unique: true
     t.index ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true
@@ -51,6 +52,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_29_094752) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "department_access", default: [], array: true
   end
 
   create_table "secure_records", force: :cascade do |t|

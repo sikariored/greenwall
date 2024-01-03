@@ -4,6 +4,12 @@
       <%= f.label :role_name, 'Название роли' %>
       <%= f.text_field :role_name, value: @role.name, require: true %>
     </div>
+
+    <div class="edit-account-field">
+      <%= f.label :department_access, 'Доступ к отделу' %>
+      <%= f.collection_check_boxes :department_access, Department.all, :id, :name %>
+    </div>
+
     <div class="actions">
       <button><%= link_to 'Назад', roles_path %></button>
       <%= button_to 'Удалить роль', role_path(@role), method: :delete %>

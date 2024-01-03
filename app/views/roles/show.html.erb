@@ -6,7 +6,11 @@
 <p>Кол-во пользователей: <%= @role.accounts.count %></p>
 <ul>
   <% @role.accounts.each do |account| %>
-    <li><%= account.name %> :: <%= account.email %> :: <%= account.department.name %></li>
+    <li>
+      <%= account.name %> :: <%= account.email %> :: <%= account.department.name %>
+      <%= link_to 'Инфо', account_path(account) %> |
+      <%= link_to 'Редактировать', edit_account_path(account) %>
+    </li>
   <% end %>
 </ul>
 

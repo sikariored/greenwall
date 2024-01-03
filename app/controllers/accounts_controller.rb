@@ -4,6 +4,7 @@ class AccountsController < ApplicationController
   def home
     @account = Account.find_by(id: params[:id])
   end
+
   def index
     @all_accounts = Account.all
     @account = Account.find_by params[:id]
@@ -11,6 +12,8 @@ class AccountsController < ApplicationController
 
   def show
     @account = Account.find(params[:id])
+    @account_department_access = @account.department_access.map {
+                                    |department_access_id| Department.find(department_access_id).name}.join(", ")
   end
 
   def edit
@@ -24,14 +27,17 @@ class AccountsController < ApplicationController
       flash[:notice] = "Данные аккаунта изменены"
     else
       render :edit
-      flash[:alert] = "Ошибка при изменении данных аккаунта"
+      flash[:alert] = "Ошибка при изменении данных аккаунта: #{@account.errors.full_messages}"
     end
   end
 
   private
-    def account_params
-      params.require(:account).permit(:name, :email, :role_id, :department_id)
+
+  def account_params
+    params.require(:account).permit(:name, :email, :role_id, :department_id, department_access: []).tap do |whitelisted|
+      whitelisted[:department_access].reject!(&:blank?)
     end
+  end
 
   def require_admin
     unless current_account.admin?

@@ -1,27 +1,48 @@
-<% if current_account.secure_records.any? %>
-  <div class="all_records_wrapper">
-    <h3>Ваши записи</h3>
-    <div class="all_records_record_wrapper">
-      <% current_account.secure_records.each do |record| %>
-        <br>
-        <span>Login: <%= record.login %></span>
-        <span>Password: <%= record.password %></span>
-        <span>Resource: <%= record.resource %></span>
-        <%= link_to 'Редактировать', edit_secure_record_path(record) %>
-        <br>
-      <% end %>
-<% else %>
-  <span>Записей не обнаружено</span>
-  </div>
-  </div>
-<% end %>
+<div class="all_current_account_records_wrapper">
+  <% if current_account.secure_records.any? %>
+    <div class="current_account_own_records_wrapper">
+      <div class="records_wrapper">
+      <h3>Ваши записи</h3>
+        <% current_account.secure_records.each do |record| %>
+          <br>
+          <span>Login: <%= record.login %></span>
+          <span>Password: <%= record.password %></span>
+          <span>Resource: <%= record.resource %></span>
+          <%= link_to 'Редактировать', edit_secure_record_path(record) %>
+          <br>
+        <% end %>
+  <% else %>
+    <span>Ваших записей не обнаружено</span>
+      </div>
+    </div>
+  <% end %>
 
-
-
-
-
-
-
-
-
-
+  <%if current_account.department_access.any? %>
+    <div class="current_account_department_records_wrapper">
+      <div class="records_wrapper">
+        <h3>Записи отдела</h3>
+        <% @accessible_departments.each do |department| %>
+          <span><%= department.name %>:</span>
+          <br>
+          <% department.accounts.each do |account| %>
+            <span>Имя: <%= account.name %></span> |
+            <span>Роль: <%= account.role.name %></span>
+            <p>
+              <% account.secure_records.each do |record| %>
+                <span>Login: <%= record.login %></span>
+                <span>Password: <%= record.password %></span>
+                <span>Resource: <%= record.resource %></span>
+                <br>
+              <% end %>
+            </p>
+            <br>
+          <% end %>
+          <br>
+          <hr>
+        <% end %>
+      </div>
+    </div>
+  <% else %>
+    <p>Записей отдела не обнаружено</p>
+  <% end %>
+</div>

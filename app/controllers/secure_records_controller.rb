@@ -1,6 +1,7 @@
 class SecureRecordsController < ApplicationController
   def index
     @all_secure_records = SecureRecord.all
+    @accessible_departments = current_account.department_access.map {|department_access_id| Department.find_by(id: department_access_id)}
   end
 
   def new
