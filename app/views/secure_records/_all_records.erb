@@ -12,13 +12,14 @@
                 <span>Login: <%= record.login %></span>
                 <span>Password: <%= record.password %></span>
                 <span>Resource: <%= record.resource %></span>
+                <span>Comment: <%= record.comment %></span>
                 <%= link_to 'Редактировать', edit_secure_record_path(record) %>
-                <br>
               <% end %>
             <% else %>
               <span>Записей не обнаружено</span>
             <% end %>
           </div>
+        <br>
       <% end %>
     </div>
   <% else %>
