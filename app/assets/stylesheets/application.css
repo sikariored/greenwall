@@ -28,7 +28,7 @@ body input {
     color: rgb(0, 212, 124);
 }
 
-.notice:not(:empty) {
+/*.notice:not(:empty) {
     color: rgb(0, 212, 124);
     background-color: #000;
     border: 1px solid rgb(0, 212, 124);
@@ -58,15 +58,7 @@ body input {
     padding: 5px;
     width: fit-content;
     max-width: 300px;
-}
-
-ul {
-    margin: 0;
-}
-
-
-
-
+}*/
 
 .form {
     display: flex;
@@ -74,4 +66,13 @@ ul {
     gap: 10px;
     width: fit-content;
     max-width: 500px;
+}
+
+.navbar_wrapper {
+    display: flex;
+    width: 100%;
+}
+
+.navbar {
+
 }

@@ -2,6 +2,6 @@
   "name": "greenwall",
   "version": "1.0.0",
   "dependencies": {
-    
+    "@rails/ujs": "^7.1.2"
   }
 }

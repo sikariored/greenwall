@@ -32,4 +32,4 @@
   </div>
 <% end %>
 
-<%= button_to 'Удалить', secure_record_path(@secure_record), method: :delete %>
+<%= button_to 'Удалить', secure_record_path(@secure_record), data: { confirm: 'Вы уверены?' }, method: :delete %>
