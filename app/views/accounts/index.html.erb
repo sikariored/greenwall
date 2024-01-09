@@ -1,18 +1,27 @@
-<h1>Список аккаунтов</h1>
-<p>Кол-во аккаунтов: <%= Account.all.count %></p>
+<h3>Список аккаунтов</h3>
 <div class="accounts-list-wrapper">
+  <span>Кол-во аккаунтов: <%= Account.all.count %></span>
   <% if @all_accounts.any? %>
-    <ul class="accounts-ul">
+    <table class="accounts-table table table-dark table-striped table-hover">
+      <tr>
+        <th>ID</th>
+        <th>Имя</th>
+        <th>Отдел</th>
+        <th>Роль</th>
+        <th>Действия</th>
+      </tr>
       <% @all_accounts.each do |account| %>
-        <li class="accounts-li">
-          <span class="accounts-list-info">id <%= account.id %> :: <%=  account.name %> :: <%= account.role.name %></span> |
-          <%= link_to 'Инфо', account_path(account) %> |
-          <%= link_to 'Редактировать', edit_account_path(account) %>
-        </li>
+        <tr>
+          <td><%= account.id %></td>
+          <td><%= account.name %></td>
+          <td><%= account.department.name %></td>
+          <td><%= account.role.name %></td>
+          <td><%= link_to 'Инфо', account_path(account) %>
+            | <%= link_to 'Редактировать', edit_account_path(account) %></td>
+        </tr>
       <% end %>
-    </ul>
+    </table>
+    </div>
   <% else %>
     <p>Аккаунты не найдены (╯°□°）╯︵ ┻━┻</p>
   <% end %>
-
-</div>

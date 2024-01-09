@@ -1,6 +1,11 @@
-<%= form_with model: @department do |f| %>
-  <div class="actions">
-    <%= link_to 'Назад', departments_path %>
-    <%= button_to 'Удалить отдел', department_path(@department), method: :delete %>
-  </div>
-<% end %>
+<div class="edit_form_wrapper">
+  <%= form_with model: @department do |f| %>
+
+    <%= f.label :name, 'Наименование' %>
+    <%= f.text_field :name, require: true, id: 'department_department_name' %>
+
+    <div class="actions">
+      <%= f.submit 'Сохранить', class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>

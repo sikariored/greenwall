@@ -25,6 +25,23 @@ class DepartmentsController < ApplicationController
     @department = Department.find(params[:id])
   end
 
+  def update
+    @department = Department.find(params[:id])
+
+    # if @department.accounts.any?
+    #   flash[:alert] = "Нельзя редактировать отдел в котором есть пользователи. Кол-во: #{@department.accounts.count}"
+    #   render :edit
+    #   return
+    # end
+
+    if @department.update(department_params)
+      redirect_to departments_path
+      flash[:notice] = "Отдел обновлен"
+    else
+      redirect_to :edit
+      flash[:alert] = "Ошибка при информации об отделе"
+    end
+  end
   def destroy
     @department = Department.find(params[:id])
     if @department.accounts.count > 0

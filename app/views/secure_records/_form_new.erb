@@ -1,18 +1,20 @@
-<%= form_with model: @secure_record do |f| %>
+<div class="secure_record_form_new">
+  <%= form_with model: @secure_record do |f| %>
 
-  <%= f.hidden_field :account_id, value: current_account.id %>
+    <%= f.hidden_field :account_id, value: current_account.id %>
+    <%= f.hidden_field :department_id, value: current_account.department.id %>
 
-  <%= f.label :login %>
-  <%= f.text_field :login, require: true %>
+    <%= f.label :login, 'Логин' %>
+    <%= f.text_field :login, require: true %>
 
-  <%= f.label :password %>
-  <%= f.text_field :password, require: true %>
+    <%= f.label :password, 'Пароль' %>
+    <%= f.text_field :password, require: true %>
 
-  <%= f.label :resource %>
-  <%= f.text_field :resource %>
+    <%= f.label :resource, 'Ресурс' %>
+    <%= f.text_field :resource %>
 
-  <%= f.label :comment %>
-  <%= f.text_field :comment %>
+    <%= f.label :comment, 'Комментарий' %>
+    <%= f.text_field :comment %>
 
-  <%= f.submit 'Create SecureRecord'%>
-<% end %>
+    <%= f.submit 'Создать запись' %>
+  <% end %></div>

@@ -1,9 +1,12 @@
-<%= form_with model: @department do |f| %>
-  <div class="edit-department-field">
-    <label for="department_department_name">Имя:</label>
+<div class="edit_form_wrapper">
+  <%= form_with model: @department do |f| %>
+
+    <%= f.label :name, 'Наименование' %>
     <%= f.text_field :name, require: true, id: 'department_department_name' %>
-  </div>
-  <div class="actions">
-    <%= f.submit 'Создать отдел' %>
-  </div>
-<% end %>
+
+    <div class="actions">
+      <%= f.submit 'Создать отдел', class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+
+</div>

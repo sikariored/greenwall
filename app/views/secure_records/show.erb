@@ -1,0 +1,11 @@
+<div class="secure_record_info">
+  <span>ID: <%= @secure_record.id %></span>
+  <span>Ресурс: <%= @secure_record.resource %></span>
+  <span>Логин: <%= @secure_record.login %></span>
+  <span>Пароль: <%= @secure_record.password %></span>
+  <div class="secure_record_comment">
+    <span>Комментарий: <%= @secure_record.comment %></span>
+  </div>
+  <span><%= link_to 'Редактировать', edit_secure_record_path(@secure_record) %></span>
+  <span><%= button_to 'Удалить', secure_record_path(@secure_record), method: :delete, data: { confirm: 'Вы уверены?' } %></span>
+</div>

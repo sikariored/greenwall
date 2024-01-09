@@ -1,10 +1,9 @@
-<%= form_with model: @role do |f| %>
-  <div class="edit-role-field">
-    <%= f.label :name, 'Название роли' %>
-    <%= f.text_field :name, require: true%>
-  </div>
+<div class="edit_form_wrapper">
+  <%= form_with model: @role do |f| %>
 
-  <div class="actions">
-    <%= f.submit 'Создать роль' %>
-  </div>
-<% end %>
+      <%= f.label :name, 'Название роли' %>
+      <%= f.text_field :name, require: true %>
+
+      <%= f.submit 'Создать роль', class: 'btn btn-success' %>
+  <% end %>
+</div>

@@ -1,42 +1,49 @@
-<div class="navbar_wrapper">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="/">GreenWall</a>
+  <% if account_signed_in? %>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <%= link_to 'Записи', secure_records_path, class: "nav-link text-nowrap" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Создать запись", new_secure_record_path, class: "nav-link text-nowrap" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Заметки', notes_path, class: "nav-link text-nowrap" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Создать заметку", new_note_path, class: "nav-link text-nowrap" %>
+        </li>
+        <% if account_signed_in? && current_account.admin? %>
+          <li class="nav-item">
+            <%= link_to 'Аккаунты', accounts_path, class: "nav-link text-nowrap" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Создать аккаунт', new_account_registration_path, class: "nav-link text-nowrap" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Роли', roles_path, class: "nav-link text-nowrap" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Создать роль', new_role_path, class: "nav-link text-nowrap" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Отделы', departments_path, class: "nav-link text-nowrap" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Создать отдел', new_department_path, class: "nav-link text-nowrap" %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
 
-  <div class="profile_info">
-    <% if account_signed_in? %>
-      <span>Профиль: <%= current_account.name %></span>
-      <span>Роль: <%= current_account.role.name %></span>
-      <% if account_signed_in? %>
-        <span class="nav-item"><%= link_to "Редактировать профиль", edit_account_registration_path %></span>
-        <span class="nav-item"><%= link_to "Создать безопасную запись", new_secure_record_path %></span>
-        <span class="nav-item"><%= link_to 'Все записи', secure_records_path %></span>
-        <span class="nav-item"><%= link_to 'Создать заметку', new_note_path %></span>
-        <span class="nav-item"><%= link_to 'Заметки', notes_path %></span>
-        <span class="nav-item"><%= button_to 'Выход', destroy_account_session_path, method: :delete, data: { confirm: "Вы уверены, что хотите выйти?" } %></span>
-      <% else %>
-        <span><%= link_to "Войти", new_account_session_path %></span>
-      <% end %>
-    <% end %>
-  </div>
-
-  <div class="navbar">
-    <% if account_signed_in? && current_account.admin? %>
-        <span class="nav-item">
-          <%= link_to 'Список аккаунтов', accounts_path %>
-        </span>
-      <span class="nav-item">
-          <%= link_to 'Создать аккаунт', new_account_registration_path %>
-        </span>
-      <span class="nav-item">
-          <%= link_to 'Список ролей', roles_path %>
-      </span>
-      <span class="nav-item">
-          <%= link_to 'Создать роль', new_role_path %>
-        </span>
-      <span class="nav-item">
-          <%= link_to 'Список отделов', departments_path %>
-      </span>
-      <span class="nav-item">
-          <%= link_to 'Создать отдел', new_department_path %>
-      </span>
-    <% end %>
-  </div>
-</div>
+    <div class="navbar-profile">
+      <span class="navbar-text text-nowrap"><%= current_account.name %> </span>
+      <span style="color: #ccc">|</span>
+      <span class="navbar-text text-nowrap"><%= current_account.role.name %></span>
+      <%= button_to 'Редактировать', edit_account_registration_path, class: "btn btn-primary btn-sm", method: :get %>
+      <%= button_to 'Выход', destroy_account_session_path, method: :delete, class: "btn btn-danger btn-sm" %>
+    </div>
+  <% end %>
+</nav>

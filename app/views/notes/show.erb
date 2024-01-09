@@ -1,4 +1,6 @@
-<span><%= @note.title %></span>
-<p><%= @note.body %></p>
-<%= link_to 'Edit', edit_note_path(@note) %>
-<%= link_to 'Back', notes_path %>
+<div class="note_wrapper">
+  <span><%= @note.title %></span>
+  <p><%= @note.body %></p>
+  <%= link_to 'Редактировать', edit_note_path(@note) %>
+  <%= link_to 'Все записи', notes_path %>
+</div>

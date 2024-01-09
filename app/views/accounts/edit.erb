@@ -1,39 +1,41 @@
-<p>Редактирование данных акканута : <%= @account.name %></p>
+<div class="account_edit_form_wrapper">
+  <h3>Редактирование данных акканута : <%= @account.name %></h3>
 
-<%= form_for @account, url: account_path(@account), method: :patch do |f| %>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.email_field :email %>
-  </div>
+  <%= form_for @account, url: account_path(@account), method: :patch do |f| %>
+    <div class="field">
+      <%= f.label :email %>
+      <%= f.email_field :email %>
+    </div>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
+    <div class="field">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
 
-  <div class="field">
-    <p>Текущая роль: <%= @account.role.name %></p>
-    <% unless @account.role.name == "Администратор" %>
-      <%= f.label :role_id, 'Новая роль' %>
-      <%= f.collection_select :role_id, Role.all, :id, :name %>
-    <% end %>
-  </div>
+    <div class="field">
+      <span>Текущая роль: <%= @account.role.name %></span> <br>
+      <% unless @account.role.name == "Администратор" %>
+        <%= f.label :role_id, 'Новая роль' %>
+        <%= f.collection_select :role_id, Role.all, :id, :name %>
+      <% end %>
+    </div>
 
-  <div class="field">
-    <p>Текущий отдел: <%= @account.department.name %></p>
-    <% unless @account.role.name == "Администратор" %>
-      <%= f.label :department_id, 'Новый отдел' %>
-      <%= f.collection_select :department_id, Department.all, :id, :name %>
-    <% end %>
-  </div>
+    <div class="field">
+      <span>Текущий отдел: <%= @account.department.name %></span> <br>
+      <% unless @account.role.name == "Администратор" %>
+        <%= f.label :department_id, 'Новый отдел' %>
+        <%= f.collection_select :department_id, Department.all, :id, :name %>
+      <% end %>
+    </div>
 
-  <div class="edit-account-field">
-    <%= f.label :department_access, 'Доступ к записям отделов: ' %>
-    <%= f.collection_check_boxes :department_access, Department.all, :id, :name %>
-  </div>
+    <div class="edit-account-field">
+      <%= f.label :department_access, 'Доступ к записям отделов: ' %>
+      <%= f.collection_check_boxes :department_access, Department.all, :id, :name %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit 'Обновить' %>
-  </div>
+    <div class="actions">
+      <%= f.submit 'Обновить' %>
+    </div>
 
-<% end %>
+  <% end %>
+</div>

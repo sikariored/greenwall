@@ -1,17 +1,19 @@
-<h1>Информация о роли</h1>
+<h3>Информация о роли <br> <%= @role.name %></h3>
 
-<p>Название роли: <%= @role.name %></p>
-<br>
-<p>Аккаунты с данной ролью: </p>
-<p>Кол-во пользователей: <%= @role.accounts.count %></p>
-<ul>
+<table class="table table-dark table-bordered table-striped table-hover table-condensed">
+  <tr>
+    <th>Аккаунты с данной ролью</th>
+    <th>Действия</th>
+  </tr>
   <% @role.accounts.each do |account| %>
-    <li>
-      <%= account.name %> :: <%= account.email %> :: <%= account.department.name %>
-      <%= link_to 'Инфо', account_path(account) %> |
-      <%= link_to 'Редактировать', edit_account_path(account) %>
-    </li>
+    <tr>
+      <td>
+        <%= link_to account.name, account_path(account) %>
+      </td>
+      <td>
+        <%= link_to 'Инфо', account_path(account) %> | <%= link_to 'Редактировать', edit_account_path(account) %>
+      </td>
+    </tr>
   <% end %>
-</ul>
-
-<%= link_to "Назад", roles_path %>
+</table>
+<%= link_to "Список ролей", roles_path %>

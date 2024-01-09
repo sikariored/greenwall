@@ -70,9 +70,10 @@ end
 
 gem "devise", "~> 4.9"
 
-
 gem "i18n", "~> 1.14"
 
-gem "attr_encrypted", "~> 4.0"
+gem "bootstrap", "~> 5.3"
 
-gem "jquery-rails", "~> 4.6"
+gem "sassc-rails", "~> 2.1"
+
+gem "attr_encrypted"

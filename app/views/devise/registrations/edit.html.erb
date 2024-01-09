@@ -1,62 +1,64 @@
-<h2>Редактирование аккаунта</h2>
+<h3>Редактирование аккаунта</h3>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<div class="account_edit_form_wrapper">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email, 'Электронная почта' %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+    <div class="field">
+      <%= f.label :email, 'Электронная почта' %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :name, 'Имя' %><br>
-    <%= f.text_field :name %>
-  </div>
+    <div class="field">
+      <%= f.label :name, 'Имя' %>
+      <%= f.text_field :name %>
+    </div>
 
-<!--  <div class="field">-->
-<!--    <p>Текущая роль: <%#= @account.role.name %></p>-->
+    <!--  <div class="field">-->
+    <!--    <p>Текущая роль: <%#= @account.role.name %></p>-->
     <%# unless current_account.role.name == "Администратор" %>
-      <%#= f.label :role_id, 'Новая роль' %>
-      <%#= f.collection_select :role_id, Role.all, :id, :name %>
+    <%#= f.label :role_id, 'Новая роль' %>
+    <%#= f.collection_select :role_id, Role.all, :id, :name %>
     <%# end %>
-<!--  </div>-->
+    <!--  </div>-->
 
-<!--  <div class="field">-->
-<!--    <p>Текущий отдел: <%#= @account.department.name %></p>-->
+    <!--  <div class="field">-->
+    <!--    <p>Текущий отдел: <%#= @account.department.name %></p>-->
     <%# unless current_account.role.name == "Администратор" %>
-      <%#= f.label :department_id, 'Новый отдел' %>
-      <%#= f.collection_select :department_id, Department.all, :id, :name %>
+    <%#= f.label :department_id, 'Новый отдел' %>
+    <%#= f.collection_select :department_id, Department.all, :id, :name %>
     <%# end %>
-<!--  </div>-->
+    <!--  </div>-->
 
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>В настоящее время ожидает подтверждения для: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password, 'Новый пароль' %> <i>(Оставьте пустым, если не хотите <b>менять пароль</b>)</i>
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <em>Пароль должен содержать <b> минимум <%= @minimum_password_length %> символов </b></em>
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div>В настоящее время ожидает подтверждения для: <%= resource.unconfirmed_email %></div>
     <% end %>
-  </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation, 'Подтверждение нового пароля' %>
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+    <div class="field">
+      <%= f.label :password, 'Новый пароль' %> <i>(Оставьте пустым, если не хотите <b>менять пароль</b>)</i>
+      <%= f.password_field :password, autocomplete: "new-password" %>
+      <% if @minimum_password_length %>
+        <em>Пароль должен содержать <b> минимум <%= @minimum_password_length %> символов </b></em>
+      <% end %>
+    </div>
 
-  <div class="field">
-    <%= f.label :current_password, 'Текущий пароль' %> <i>(введите ваш текущий пароль для применения внесённых измененйи)</i>
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
+    <div class="field">
+      <%= f.label :password_confirmation, 'Подтверждение нового пароля' %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "Принять" %>
-  </div>
-<% end %>
-<br>
-<div><%= button_to "Удалить этот аккаунт", registration_path(resource_name), method: :delete %></div>
+    <div class="field">
+      <%= f.label :current_password, 'Текущий пароль' %>
+      <i>(введите ваш текущий пароль для применения внесённых измененйи)</i>
+      <%= f.password_field :current_password, autocomplete: "current-password" %>
+    </div>
 
-<%= link_to "Назад", :back %>
+    <div class="actions">
+      <%= f.submit "Принять", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+  <div><%= button_to "Удалить этот аккаунт", registration_path(resource_name), method: :delete, class: "btn btn-danger" %></div>
+
+  <div><%= link_to "Назад", :back, class: "btn btn-primary" %></div>
+</div>

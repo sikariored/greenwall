@@ -1,11 +1,14 @@
-<%= form_with model: @note do |f| %>
+<div class="note_form_wrapper">
+  <%= form_with model: @note do |f| %>
 
-  <%= f.label :title %>
-  <%= f.text_field :title, require: true %>
+    <%= f.label :title, 'Заголовок' %>
+    <%= f.text_field :title %>
 
-  <%= f.label :body %>
-  <%= f.text_field :body, require: true %>
+    <%= f.label :body, 'Текст' %>
+    <%= f.text_area :body, require: true, rows: 10 %>
 
-  <%= f.submit 'Update Note'%>
+    <%= f.hidden_field :account_id, value: current_account.id %>
 
-<% end %>
+    <%= f.submit 'Обновить заметку', class: "btn btn-primary" %>
+  <% end %>
+</div>

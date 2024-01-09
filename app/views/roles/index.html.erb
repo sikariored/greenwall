@@ -1,15 +1,16 @@
-<h1>Список ролей</h1>
-
-<% if @all_roles.any? %>
-  <% @all_roles.each do |role| %>
-    <ul class="roles-list">
-      <li class="role-list-item">
-        <%= role.name %> |
-        <%= link_to 'Инфо', role_path(role) %> |
-        <%= link_to 'Редактировать', edit_role_path(role) %>
-      </li>
-    </ul>
-  <% end %>
+<h3>Список ролей</h3>
+<% if Role.all.any? %>
+  <table class="table table-dark table-bordered table-striped table-hover table-condensed">
+    <tr>
+      <th>Наименование</th>
+      <th>Действия</th>
+    </tr>
+    <% Role.all.each do |role| %>
+      <tr>
+        <td><%= role.name %></td>
+        <td><%= link_to 'Инфо', role_path(role) %> | <%= link_to 'Редактировать', edit_role_path(role) %></td>
+    <% end %>
+  </table>
 <% else %>
   <p>Роли не найдены (╯°□°）╯︵ ┻━┻</p>
 <% end %>

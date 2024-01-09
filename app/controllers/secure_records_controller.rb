@@ -1,9 +1,13 @@
 class SecureRecordsController < ApplicationController
   def index
     @all_secure_records = SecureRecord.all
-    @accessible_departments = current_account.department_access.map {|department_access_id| Department.find_by(id: department_access_id)}
+    @accessible_departments = current_account.department_access.map {|department_access_id| Department.find_by(
+                                                                                              id: department_access_id)}
   end
 
+  def show
+    @secure_record = SecureRecord.find(params[:id])
+  end
   def new
     @secure_record = SecureRecord.new
     @gwk = ENV['G1W2SK']
@@ -48,6 +52,6 @@ class SecureRecordsController < ApplicationController
   private
 
   def secure_record_params
-    params.require(:secure_record).permit(:login, :password, :resource, :account_id, :comment)
+    params.require(:secure_record).permit(:login, :password, :resource, :account_id, :comment, :department_id)
   end
 end

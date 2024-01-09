@@ -1,5 +1,21 @@
-<% Note.all.each do |note| %>
-  <div>
-    <strong><%= link_to note.title, note_path(note) %></strong> | <%= note.account.name %>
-  </div>
-<% end %>
+<div class="notes_wrapper">
+  <% Account.all.each do |account| %>
+    <% if account.notes.any? %>
+      <div class="account_notes_wrapper">
+        <span><%= link_to account.name, account_path(account) %></span>
+        <% account.notes.each do |note| %>
+          <div class="note">
+            <span><%= link_to note.title, note_path(note) %></span>
+<!--            <div class="note_body">-->
+              <%#= note.body %>
+<!--            </div>-->
+            <span class="note_actions">
+              <%#= button_to 'Просмотр', note_path(note), method: 'get', class: "btn btn-primary" %>
+              <%#= button_to 'Редактировать', edit_note_path(note), method: 'get', class: "btn btn-warning" %>
+              <%#= button_to 'Удалить', note_path(note), method: 'delete', class: "btn btn-danger" %>
+          </span>
+          </div>
+        <% end %></div>
+    <% end %>
+  <% end %>
+</div>

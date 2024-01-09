@@ -17,8 +17,8 @@ class NotesController < ApplicationController
       redirect_to notes_path
       flash[:notice] = "Заметка успешно создана"
     else
-      render :new
       flash[:alert] = "Ошибка при создании заметки #{@note.errors.full_messages }"
+      redirect_to new_note_path
     end
   end
   def edit

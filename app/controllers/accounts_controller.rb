@@ -1,5 +1,5 @@
 class AccountsController < ApplicationController
-  before_action :require_admin, only: %i[show edit update]
+  before_action :require_admin, only: %i[edit update]
 
   def home
     @account = Account.find_by(id: params[:id])

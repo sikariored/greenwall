@@ -1,0 +1,430 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@import "bootstrap";
+
+body {
+  background-color: #1e1e1e;
+  color: #fff;
+}
+
+h3 {
+  color: rgba(105,255,191,0.89);
+}
+
+a {
+  text-decoration: none;
+  color: #3fff82;
+}
+
+a:hover {
+  color: #3fbcff;
+  text-decoration: underline;
+}
+
+//FLASH
+
+.flash {
+  position: absolute;
+  top: 75px;
+  right: 40px;
+}
+
+.flash .alert-success:not(:empty) {
+  border: #3fff82 1px solid !important;
+  color: #3fff82 !important;
+  background-color: transparent !important;
+  margin: 0;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 5px;
+  height: fit-content;
+}
+
+.flash .alert:not(:empty) {
+  border: #ff2c3e 1px solid;
+  color: #ff2c3e;
+  margin: 0;
+  padding: 5px;
+  height: fit-content;
+}
+
+//NAVBAR
+
+.navbar {
+  margin-bottom: 20px;
+  padding: 10px;
+  height: 55px;
+}
+
+.navbar-brand {
+  color: #3fff82;
+}
+
+.navbar-brand:hover {
+  color: #3fff82;
+}
+
+.navbar-profile {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+//HOME
+
+.feature-list-wrapper {
+  margin: 0;
+  padding: 20px;
+  background-color: #1e1e1e;
+  height: 100%;
+}
+
+.feature-list-wrapper h1 {
+  color: #3fff82;
+}
+
+.feature-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.feature-item {
+  color: #ffffff; /* Белый цвет текста */
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+//LOGIN PAGE
+
+.login-page {
+  color: #3fff82;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+    a {
+      color: rgba(255, 196, 0, 0.87);
+      font: bold 14px sans-serif;
+    }
+}
+
+//INDEX
+
+.all_records_wrapper {
+  color: #fff;
+  margin: 0;
+  padding: 20px;
+  background-color: #1e1e1e;
+  height: 100%;
+
+  h2, h5 {
+    color: #3fff82;
+  }
+}
+
+.record_wrapper {
+  color: #ffffff;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 10px;
+
+  strong {
+      color: #ff0c45;
+  }
+}
+
+.record_card_wrapper {
+  display: flex;
+  color: #ffffff;
+  padding: 10px;
+  background-color: rgba(108, 108, 108, 0.49);
+  flex-direction: column;
+  align-items: flex-start;
+  width: fit-content;
+  border-radius: 5px;
+  gap: 5px;
+
+  a {
+    color: rgba(105, 255, 191, 0.89);
+  }
+
+  a:hover {
+    color: rgb(0, 148, 255);
+  }
+}
+
+.account_link {
+  font-size: large;
+  color: rgba(105, 255, 191, 0.89);
+  text-decoration: none;
+}
+
+.account_link:hover {
+  color: rgb(0, 148, 255);
+  text-decoration: underline;
+}
+
+table td {
+  max-width: 100px;
+  max-height: 20px;
+  overflow-y: auto;
+  overflow-x: auto;
+}
+
+//SHOW
+
+.secure_record_info {
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px;
+
+  .secure_record_comment {
+    color: #3fff82;
+    font-style: italic;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background-color: rgb(70, 70, 70);
+    border-radius: 10px;
+    padding: 10px;
+  }
+}
+
+//ACCOUNTS INDEX
+
+.accounts-list-wrapper {
+  color: #ffffff;
+  margin: 0;
+  padding: 20px;
+  background-color: #1e1e1e;
+  height: 100%;
+}
+
+//ACCOUNT SHOW
+
+.account_show {
+  color: #ffffff;
+  margin: 0;
+  padding: 20px;
+  background-color: #1e1e1e;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  b {
+    color: #3fff82;
+  }
+}
+
+//ACCOUNT EDIT
+
+.account_edit_form_wrapper {
+  color: #ffffff;
+  margin: 0;
+  padding: 20px;
+  background-color: #1e1e1e;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+
+}
+
+
+
+//ACCOUNT NEW
+
+.new_account {
+  color: #ffffff;
+  margin: 0;
+  padding: 20px;
+  background-color: #1e1e1e;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+//SECURE RECORDS NEW
+
+.secure_record_form_new, .secure_record_form_edit {
+  color: #ffffff;
+  margin: 0;
+  padding: 20px;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    max-width: 500px;
+  }
+}
+
+//NOTES INDEX
+
+.notes_wrapper {
+  color: #ffffff;
+  margin: 0;
+  padding: 20px;
+  background-color: #1e1e1e;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+
+  .note {
+    display: flex;
+    flex-direction: column;
+    background-color: #464646;
+    border-radius: 5px;
+    width: 360px;
+    padding: 10px;
+    gap: 10px;
+
+    span {
+      font-size: 22px;
+    }
+
+    .note_body {
+      color: #fff;
+      margin-top: 5px;
+      margin-bottom: 5px;
+      background-color: rgb(124, 124, 124);
+      border-radius: 10px;
+      padding: 10px;
+      overflow-y: scroll;
+      height: 100px;
+    }
+
+    .note_actions {
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+    }
+  }
+}
+
+.note_wrapper {
+  color: #ffffff;
+  margin: 0;
+  padding: 20px;
+  background-color: #1e1e1e;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  span {
+    font-size: 22px;
+    color: #3fff82;
+  }
+
+  p {
+    color: #fff;
+    width: 100%;
+    max-width: 900px;
+    line-height: 30px;
+    background-color: rgb(70, 70, 70);
+    border-radius: 10px;
+    padding: 10px;
+  }
+
+  a {
+    width: fit-content;
+  }
+}
+
+//NOTES FORM
+
+.note_form_wrapper {
+  color: #ffffff;
+  margin: 0;
+  padding: 20px;
+  background-color: #1e1e1e;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    max-width: 500px;
+
+    label {
+      color: #fff;
+      font-size: 20px;
+    }
+  }
+}
+
+.account_notes_wrapper {
+  color: #ffffff;
+  margin: 0;
+  padding: 20px;
+  background-color: #1e1e1e;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 1px solid #3fff82;
+  border-radius: 5px;
+
+  span {
+    font-size: 22px;
+  }
+}
+
+//ROLE EDIT
+
+.edit_form_wrapper {
+
+  max-width: 300px;
+  width: 100%;
+
+
+  form{
+    color: #ffffff;
+    margin: 0;
+    padding: 20px;
+    background-color: #1e1e1e;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  p {
+    color: #fff;
+    padding: 5px;
+  }
+}

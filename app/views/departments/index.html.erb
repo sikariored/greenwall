@@ -1,15 +1,19 @@
-<h1>Список отделов</h1>
+<h3>Список отделов</h3>
 
 <% if @all_departments.any? %>
-  <% @all_departments.each do |department| %>
-    <ul class="departments-list">
-      <li class="department-list-item">
-        <%= department.name %> |
-        <%= link_to 'Инфо', department_path(department) %> |
-        <%= link_to 'Редактировать', edit_department_path(department) %>
-      </li>
-    </ul>
+    <table class="table table-dark table-striped table-hover table-bordered table-condensed">
+      <tr>
+        <th>Наименование</th>
+        <th>Действия</th>
+      </tr>
+      <% @all_departments.each do |department| %>
+        <tr>
+          <td><%= department.name %></td>
+          <td><%= link_to 'Инфо', department_path(department) %>
+            | <%= link_to 'Редактировать', edit_department_path(department) %> </td>
+        </tr>
+      <% end %>
+    </table>
+  <% else %>
+    <p style="color: #fff">Отделы не найдены (╯°□°）╯︵ ┻━┻</p>
   <% end %>
-<% else %>
-  <p>Отделы не найдены (╯°□°）╯︵ ┻━┻</p>
-<% end %>

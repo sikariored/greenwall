@@ -1,16 +1,16 @@
-<% if @role.name != "Администратор" %>
-  <%= form_with model: @role do |f| %>
-    <div class="edit-role-field">
+<div class="edit_form_wrapper">
+  <% if @role.name != "Администратор" %>
+    <%= form_with model: @role do |f| %>
+
       <%= f.label :role_name, 'Название роли' %>
       <%= f.text_field :role_name, value: @role.name, require: true %>
-    </div>
 
-    <div class="actions">
-      <button><%= link_to 'Назад', roles_path %></button>
-      <%= button_to 'Удалить роль', role_path(@role), method: :delete %>
-    </div>
+      <div class="actions">
+        <%= button_to 'Удалить роль', role_path(@role), method: :delete, class: 'btn btn-danger' %>
+        <%= link_to 'Назад', roles_path, class: 'btn btn-primary' %>
+      </div>
+    <% end %>
+  <% elsif @role.name == "Администратор" %>
+    <p>Нельзя редактировать роль "Администратор"</p>
   <% end %>
-<% elsif @role.name == "Администратор" %>
-  <p>Нельзя редактировать роль "Администратор"</p>
-<% else %>
-<% end %>
+</div>

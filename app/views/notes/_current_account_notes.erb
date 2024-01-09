@@ -1,4 +1,15 @@
-<% @current_account_notes.each do |note| %>
-  <p><%= link_to note.title, note_path(note) %></p>
-  <%= button_to 'Удалить', note_path(note), method: 'delete' %>
-<% end %>
+<div class="notes_wrapper">
+  <% @current_account_notes.each do |note| %>
+    <div class="note">
+      <span><%= link_to note.title, note_path(note) %></span>
+      <div class="note_body">
+        <%= note.body %>
+      </div>
+      <span class="note_actions">
+        <%= button_to 'Просмотр', note_path(note), method: 'get', class: "btn btn-primary" %>
+        <%= button_to 'Редактировать', edit_note_path(note), method: 'get', class: "btn btn-warning" %>
+        <%= button_to 'Удалить', note_path(note), method: 'delete', class: "btn btn-danger" %>
+      </span>
+    </div>
+  <% end %>
+</div>

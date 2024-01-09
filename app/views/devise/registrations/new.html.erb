@@ -1,4 +1,4 @@
-<h2>Регистрация нового аккаунта</h2>
+<h3>Регистрация нового аккаунта</h3>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
@@ -24,7 +24,7 @@
   </div>
 
   <div class="edit-account-field">
-    <%= f.label :department_access, 'Доступ к отделу' %>
+    <%= f.label :department_access, 'Доступ к отделам: ' %>
     <%= f.collection_check_boxes :department_access, Department.all, :id, :name %>
   </div>
 

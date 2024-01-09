@@ -1,8 +1,15 @@
-<p>ID: <%= @account.id %></p>
-<p>Email: <%= @account.email %></p>
-<p>Имя: <%= @account.name %></p>
-<p>Роль: <%= @account.role.name %></p>
-<p>Отдел: <%= @account.department.name %></p>
-<p>Доступ к записям отделов: <%= @account_department_access %></p>
-<p>Создан: <%= @account.created_at %></p>
-<p>Изменён: <%= @account.updated_at %></p>
+<% if current_account.department_access.include? @account.department.id %>
+  <h3>Информация об аккаунте</h3>
+  <div class="account_show">
+    <span><b>ID:</b> <%= @account.id %></span>
+    <span><b>Email:</b> <%= @account.email %></span>
+    <span><b>Имя:</b> <%= @account.name %></span>
+    <span><b>Роль:</b> <%= @account.role.name %></span>
+    <span><b>Отдел:</b> <%= @account.department.name %></span>
+    <span><b>Доступ к записям отделов:</b> <%= @account_department_access %></span>
+    <span><b>Создан:</b> <%= @account.created_at.strftime("%d.%m.%Y %H:%M") %></span>
+    <span><b>Изменён:</b> <%= @account.updated_at.strftime("%d.%m.%Y %H:%M") %></span>
+  </div>
+<% else %>
+  У вас нет доступа к этой странице.
+<% end %>

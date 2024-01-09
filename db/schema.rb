@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_03_162226) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_06_190904) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -72,7 +72,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_03_162226) do
     t.datetime "updated_at", null: false
     t.string "encrypted_password_iv"
     t.text "comment"
+    t.bigint "department_id", null: false
     t.index ["account_id"], name: "index_secure_records_on_account_id"
+    t.index ["department_id"], name: "index_secure_records_on_department_id"
     t.index ["encrypted_password_iv"], name: "index_secure_records_on_encrypted_password_iv", unique: true
   end
 
@@ -81,4 +83,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_03_162226) do
   add_foreign_key "accounts", "secure_records"
   add_foreign_key "notes", "accounts"
   add_foreign_key "secure_records", "accounts"
+  add_foreign_key "secure_records", "departments"
 end
